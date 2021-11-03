@@ -1,0 +1,6 @@
+{
+  "description": "sam execute",
+  "scripts": {
+    "build": "sam build --use-container"
+  }
+}
