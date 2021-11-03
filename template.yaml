@@ -37,8 +37,6 @@ Resources:
           Properties:
             Path: /ruby-sample
             Method: get
-      Layers:
-        - !Ref imagemagicklambdalayer
 
 Outputs:
   HelloWorldApi:
