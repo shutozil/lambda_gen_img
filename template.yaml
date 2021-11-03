@@ -38,6 +38,21 @@ Resources:
             Path: /ruby-sample
             Method: get
 
+  PySampleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: generate_by_py/sample/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /py-sample
+            Method: get
+
 Outputs:
   HelloWorldApi:
     Description: "API Gateway endpoint URL for Prod stage for Hello World function"
@@ -58,3 +73,13 @@ Outputs:
   RubySampleFunctionIamRole:
     Description: "Implicit IAM Role created for Ruby Sample function"
     Value: !GetAtt RubySampleFunctionRole.Arn
+
+  PySampleApi:
+    Description: "API Gateway endpoint URL for Py Sample function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/Py-sample/"
+  PySampleFunction:
+    Description: "Py Sample Lambda Function ARN"
+    Value: !GetAtt PySampleFunction.Arn
+  PySampleFunctionIamRole:
+    Description: "Implicit IAM Role created for Py Sample function"
+    Value: !GetAtt PySampleFunctionRole.Arn
