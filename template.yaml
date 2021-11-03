@@ -40,13 +40,6 @@ Resources:
       Layers:
         - !Ref imagemagicklambdalayer
 
-  imagemagicklambdalayer:
-    Type: AWS::Serverless::Application
-    Properties:
-      Location:
-        ApplicationId: arn:aws:serverlessrepo:us-east-1:145266761615:applications/image-magick-lambda-layer
-        SemanticVersion: 1.0.0
-
 Outputs:
   HelloWorldApi:
     Description: "API Gateway endpoint URL for Prod stage for Hello World function"
