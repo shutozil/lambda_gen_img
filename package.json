@@ -1,6 +1,6 @@
 {
   "description": "sam execute",
   "scripts": {
-    "build": "sam build --use-container"
+    "build": "sam build --use-container --container-env-var-file env.json"
   }
 }

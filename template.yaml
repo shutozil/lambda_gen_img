@@ -46,6 +46,12 @@ Resources:
       Runtime: python3.9
       Architectures:
         - x86_64
+      Environment:
+        Variables:
+          S3_BUCKET_NAME: "" # env.jsonで上書き(local invoke, deploy)
+          OBJECT_KEY_NAME: "" # env.jsonで上書き(local invoke, deploy)
+      Policies:
+        - AmazonS3ReadOnlyAccess
       Events:
         HelloWorld:
           Type: Api
