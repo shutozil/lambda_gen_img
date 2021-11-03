@@ -1,9 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  generate_by_ruby
-
-  Sample SAM Template for generate_by_ruby
+  AWS Lambdaを使って画像生成を試す
 
 Globals:
   Function:
@@ -25,6 +23,21 @@ Resources:
             Path: /hello
             Method: get
 
+  RubySampleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: generate_by_ruby/sample/
+      Handler: app.lambda_handler
+      Runtime: ruby2.7
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /ruby-sample
+            Method: get
+
 Outputs:
   HelloWorldApi:
     Description: "API Gateway endpoint URL for Prod stage for Hello World function"
@@ -35,3 +48,13 @@ Outputs:
   HelloWorldFunctionIamRole:
     Description: "Implicit IAM Role created for Hello World function"
     Value: !GetAtt HelloWorldFunctionRole.Arn
+
+  RubySampleApi:
+    Description: "API Gateway endpoint URL for Ruby Sample function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ruby-sample/"
+  RubySampleFunction:
+    Description: "Ruby Sample Lambda Function ARN"
+    Value: !GetAtt RubySampleFunction.Arn
+  RubySampleFunctionIamRole:
+    Description: "Implicit IAM Role created for Ruby Sample function"
+    Value: !GetAtt RubySampleFunctionRole.Arn

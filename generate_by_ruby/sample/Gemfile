@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+gem "mini_magick"
+
+ruby '~> 2.7.0'
