@@ -50,6 +50,8 @@ Resources:
         Variables:
           S3_BUCKET_NAME: "" # env.jsonで上書き(local invoke, deploy)
           OBJECT_KEY_NAME: "" # env.jsonで上書き(local invoke, deploy)
+          FONT_URL: "" # env.jsonで上書き(local invoke, deploy)
+          S3_OBJECT_ACL: "" # env.jsonで上書き(local invoke, deploy)
       Policies:
         - AmazonS3ReadOnlyAccess
       Events:
